@@ -1,17 +1,21 @@
-# RTM (Rust Desktop Timer)
+# RTM (Rust Timer)
 
 Rust と egui (eframe) で構築された、シンプルで高速なデスクトップタイマーアプリです。
 Windows 向けに最適化されており、軽量なバイナリと直感的な操作感を提供します。
 
 ## 🚀 Specification
 
-- **ハイパフォーマンス**: Rust + GPU描画による低遅延なUI。
 - **ターミナル連携**: インストール後、コマンドラインから `$ rtm` で即座に起動可能。
-- **キーボードフレンドリー**: すべての主要操作にショートカットキーを割り当て。
-- **モダンなデザイン**: ダークモード、デジタルフォント、フレームレス/タイトルバーの柔軟な切り替え。
+- **キーボード操作対応**: 主要操作にショートカットキーを割り当て。
+
+#### download for windows
+
+最新のインストーラー（MSI）は以下からダウンロードできます。
+
+[**📥 rtm-rust-timer v0.1.0 をダウンロード**](https://github.com/nemuinari/rtm-rust-timer/releases/download/v0.1.0/rtm-rust-timer-0.1.0-x86_64.msi)
 
 ```bash
-# 実行コマンド
+# インストール後の実行コマンド
 $ rtm
 ```
 
