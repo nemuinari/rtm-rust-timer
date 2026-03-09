@@ -1,0 +1,28 @@
+[package]
+name = "rtm-rust-timer"
+version = "0.1.0"
+edition = "2021"
+authors = ["Nemui Nari <email@example.com>"]
+license = "MIT"
+
+[[bin]]
+name = "rtm"
+path = "src/main.rs"
+
+[dependencies]
+eframe = { version = "0.29", features = ["persistence"] }
+chrono = "0.4"
+image = { version = "0.24", default-features = false, features = ["png"] }
+
+[build-dependencies]
+winres = "0.1"
+
+[profile.release]
+opt-level = "z"   # サイズ最小化（速度優先なら "3"）
+lto = true        # Link Time Optimization（最適化を強化）
+codegen-units = 1 # 並列コンパイルを無効にする
+panic = "abort"   # パニック時のスタックトレースを省いて軽量化
+strip = true      # デバッグ記号を自動で削除（Rust 1.59+）
+
+[package.metadata.wix]
+eula = false # 利用規約ダイアログを表示しない設定（警告回避）
