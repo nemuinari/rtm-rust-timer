@@ -12,7 +12,7 @@ Windows 向けに最適化されており、軽量なバイナリと直感的な
 
 最新のインストーラー（MSI）は以下からダウンロードできます。
 
-[**📥 rtm-rust-timer v0.1.0 をダウンロード**](https://github.com/nemuinari/rtm-rust-timer/releases/download/v0.1.0/rtm-rust-timer-0.1.0-x86_64.msi)
+[**📥 rtm-rust-timer v0.1.1 をダウンロード**](https://github.com/nemuinari/rtm-rust-timer/releases/download/v0.1.1/rtm-rust-timer-0.1.1-x86_64.msi)
 
 ```bash
 # インストール後の実行コマンド
@@ -21,12 +21,13 @@ $ rtm
 
 ## ⌨️Key Bindings
 
-| キー        | アクション                           |
-| :---------- | :----------------------------------- |
-| **[S]**     | タイマーの開始 / 停止 (START / STOP) |
-| **[R]**     | タイマーのリセット (RESET)           |
-| **[Space]** | ウィンドウの最小化                   |
-| **[Esc]**   | アプリケーションの終了               |
+| キー                     | アクション                           |
+| :----------------------- | :----------------------------------- |
+| **[S]**                  | タイマーの開始 / 停止 (START / STOP) |
+| **[R]**                  | タイマーのリセット (RESET)           |
+| **[Space]**              | ウィンドウの最小化                   |
+| **[Esc]**                | アプリケーションの終了               |
+| **[Win + (Alt) + 矢印]** | 移動(Windows標準機能)                |
 
 ## 🛠️Developer Setup
 
