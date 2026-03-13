@@ -31,21 +31,25 @@ $ rtm
 
 #### Directory structure
 
-```txt
+````txt
 rtm-rust-timer/
-├── Cargo.toml          # プロジェクト設定・依存関係
-├── build.rs            # Windowsリソース（アイコン）埋め込み用
-├── assets/             # 静的リソース
-│   ├── icon.png        # アプリ用アイコン (512x512)
-│   ├── icon.ico        # Windows用アイコン (Tauri CLIで生成)
-│   └── font.ttf        # デジタル数字フォント
+├── Cargo.toml            # プロジェクト設定・依存関係
+├── build.rs              # Windowsリソース（アイコン等）埋め込み用
+├── assets/               # 静的リソース
+│   ├── icon.png          # アプリ用アイコン (512x512)
+│   ├── icon.ico          # Windows用アイコン
+│   └── PixelMplus12.ttf  # デジタル数字用フォント
 ├── src/
-│   ├── main.rs         # エントリーポイント・ウィンドウ設定
-│   ├── app.rs          # UI描画・入力ハンドリング
-│   ├── timer.rs        # タイマー計算ロジック
-│   └── components/     # 再利用可能なUIパーツ
-└── wix/                # MSIインストーラー設定ファイル
-```
+│   ├── main.rs           # エントリーポイント（アプリ起動のみを担当）
+│   └── components/       # アプリケーションの各機能モジュール
+│       ├── mod.rs        # 各モジュールの公開定義
+│       ├── app.rs        # メインループ、UI配置、イベントハンドリング
+│       ├── logic.rs      # タイマー計算、時間フォーマットのロジック
+│       ├── ui.rs         # 再利用可能なUIパーツ（表示、ボタン、共通スタイル）
+│       ├── frame.rs      # ウィンドウ設定（サイズ、透過、常時最前面等）
+│       ├── font.rs       # カスタムフォントの読み込み設定
+│       └── icon.rs       # アプリ内でのアイコン読み込み
+└── wix/                  # MSIインストーラー生成用設定```
 
 ### build and Relese
 
@@ -71,7 +75,7 @@ $ cargo wix init
 # MSI ビルド
 $ cargo wix
 
-```
+````
 
 ## Recommended environment
 
