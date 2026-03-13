@@ -1,9 +1,10 @@
-use std::time::{Duration, Instant}; // 標準モジュール
+use chrono::Duration as ChronoDuration;
+use std::time::{Duration, Instant};
 
 pub struct Timer {
-    pub is_running: bool,           // タイマーが現在動いているかどうかのフラグ
-    elapsed_before_start: Duration, // 合計時間
-    start_instant: Option<Instant>, // 「START」を押した瞬間の時刻（止まっている時は None）
+    pub is_running: bool,
+    elapsed_before_start: Duration,
+    start_instant: Option<Instant>,
 }
 
 impl Timer {
@@ -15,7 +16,6 @@ impl Timer {
         }
     }
 
-    // 開始と停止を交互に切り替えるトグル
     pub fn toggle(&mut self) {
         if self.is_running {
             self.stop();
@@ -24,7 +24,6 @@ impl Timer {
         }
     }
 
-    // 計測を開始
     fn start(&mut self) {
         if !self.is_running {
             self.start_instant = Some(Instant::now());
@@ -32,7 +31,6 @@ impl Timer {
         }
     }
 
-    // 計測を一時停止
     fn stop(&mut self) {
         if self.is_running {
             if let Some(start) = self.start_instant {
@@ -43,18 +41,31 @@ impl Timer {
         }
     }
 
-    // リセット、初期化
     pub fn reset(&mut self) {
         self.is_running = false;
         self.elapsed_before_start = Duration::ZERO;
         self.start_instant = None;
     }
 
-    // 計算結果を出力
     pub fn get_elapsed(&self) -> Duration {
         match self.start_instant {
             Some(start) => self.elapsed_before_start + start.elapsed(),
             None => self.elapsed_before_start,
         }
+    }
+    /// 現在の経過時間を "HH:MM:SS:CC" 形式の文字列で返す
+    pub fn format_elapsed(&self) -> String {
+        let elapsed = self.get_elapsed();
+        let dur = ChronoDuration::from_std(elapsed).unwrap_or_else(|_| ChronoDuration::zero());
+
+        let centiseconds = (dur.num_milliseconds() / 10) % 100;
+
+        format!(
+            "{:02}:{:02}:{:02}:{:02}",
+            dur.num_hours(),
+            dur.num_minutes() % 60,
+            dur.num_seconds() % 60,
+            centiseconds
+        )
     }
 }
